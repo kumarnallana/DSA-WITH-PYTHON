@@ -14,28 +14,20 @@ nums: list[int] = [
 
 def largest_even(nums: list[int]) -> int | None:
 
-    if not nums:
-        raise IndexError("List shouldn't be empty")
+    largest_even: int = None
 
-    even_list: list[int] = []
+    if not nums:
+        raise IndexError("Integer list shouldn't be empty")
 
     for num in nums:
         if num % 2 == 0:
-            even_list.append(num)
+            if largest_even is None:
+                largest_even = num
 
-    if not even_list:
-        raise IndexError("List shouldn't be empty")
+            elif largest_even < num:
+                largest_even = num
 
-    if not isinstance(even_list, int) or isinstance(nums, int):
-        return None
-
-    largest = even_list[0]
-
-    for even in even_list:
-        if even > largest:
-            largest = even
-
-    return largest
+    return largest_even
 
 
 print(largest_even(nums))
