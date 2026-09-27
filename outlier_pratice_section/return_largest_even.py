@@ -12,15 +12,22 @@ nums: list[int] = [
 ]
 
 
-def largest_even(nums: list[int]) -> int:
+def largest_even(nums: list[int]) -> int | None:
+
     if not nums:
-        return []
+        raise IndexError("List shouldn't be empty")
 
     even_list: list[int] = []
 
     for num in nums:
         if num % 2 == 0:
             even_list.append(num)
+
+    if not even_list:
+        raise IndexError("List shouldn't be empty")
+
+    if not isinstance(even_list, int) or isinstance(nums, int):
+        return None
 
     largest = even_list[0]
 
