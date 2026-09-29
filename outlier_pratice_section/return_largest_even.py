@@ -14,10 +14,10 @@ nums: list[int] = [
 
 def largest_even(nums: list[int]) -> int | None:
 
-    largest_even: int = None
+    largest_even: int | None = None
 
     if not nums:
-        raise IndexError("Integer list shouldn't be empty")
+        return None
 
     for num in nums:
         if num % 2 == 0:
